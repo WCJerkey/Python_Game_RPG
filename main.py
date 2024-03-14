@@ -9,9 +9,14 @@ pygame.display.set_caption("Snake RPG")
 clock = pygame.time.Clock()
 test_font = pygame.font.Font("./font/Pixeltype.ttf", 50)
 
-sky_surface = pygame.image.load('./graphics/Sky.png')
-ground_surface = pygame.image.load("./graphics/ground.png")
-text_surface = test_font.render("My Game", False, "Green")
+sky_surface = pygame.image.load('./graphics/Sky.png').convert()
+ground_surface = pygame.image.load("./graphics/ground.png").convert()
+text_surface = test_font.render("My Game", False, "Black").convert()
+snail_surface = pygame.image.load("./graphics/snail/snail1.png").convert_alpha()
+player_surface = pygame.image.load("./graphics/Player/player_stand.png").convert_alpha()
+player_rec = player_surface.get_rect(midbottom = (80, 300))
+
+snail_x_pos = 600
 
 while True:
 
@@ -20,9 +25,17 @@ while True:
             pygame.quit()
             exit()
 
+    
+    snail_x_pos -= 4
+    player_rec.right -= 2
+    if snail_x_pos < -100: snail_x_pos = 800
+
     screen.blit(sky_surface, (0,0))
     screen.blit(ground_surface, (0, 300))
     screen.blit(text_surface, (300, 50))
+    screen.blit(snail_surface, (snail_x_pos, 250))
+    screen.blit(player_surface, player_rec)
+
 
     pygame.display.update()
     clock.tick(60)
