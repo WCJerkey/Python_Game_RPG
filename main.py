@@ -24,8 +24,11 @@ ground_surface = pygame.image.load("./graphics/ground.png").convert()
 snail_surface = pygame.image.load("./graphics/snail/snail1.png").convert_alpha()
 snail_rec = snail_surface.get_rect(midbottom = (600,300))
 
-player_surface = pygame.image.load("./graphics/Player/player_stand.png").convert_alpha()
+player_surface = pygame.image.load("./graphics/Player/player_walk_1.png").convert_alpha()
 player_rec = player_surface.get_rect(midbottom = (80, 300))
+
+player_stand = pygame.image.load("./graphics/Player/player_stand.png").convert_alpha()
+player_stand_rec = player_stand.get_rect(midbottom = (400, 300))
 
 player_gravity = 0
 
@@ -76,6 +79,7 @@ while True:
             game_active = False
     else:
         screen.fill("Black")
+        screen.blit(player_stand, player_stand_rec)
 
 
     pygame.display.update()
