@@ -33,7 +33,7 @@ while True:
     
     snail_rec.right -= 4
     player_rec.right += 1
-    if snail_rec.right < -50: snail_rec.right = 800
+    if snail_rec.right <= 0: snail_rec.left = 800
 
     screen.blit(sky_surface, (0,0))
     screen.blit(ground_surface, (0, 300))
